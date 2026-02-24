@@ -278,14 +278,14 @@ with st.sidebar:
         from_name = st.text_input("From Name", value="HR Team")
         from_email = st.text_input("From Email (ควรตรงกับ Username)", value=smtp_user)
 
-        subj_pass = st.text_input("หัวเรื่อง (ผ่าน)", value="[บริษัท] ผลการสมัครงาน – ผ่านการคัดกรองเบื้องต้น")
-        subj_fail = st.text_input("หัวเรื่อง (ไม่ผ่าน)", value="[บริษัท] ผลการสมัครงาน – ไม่ผ่านการคัดกรอง")
+        subj_pass = "[บริษัท] ผลการสมัครงาน – ผ่านการคัดกรอง"
+        subj_fail = "[บริษัท] ผลการสมัครงาน – ไม่ผ่านการคัดกรอง"
 
         default_pass = textwrap.dedent("""\
 เรียน {{name}} ({{candidate_id}})
 ผลการคัดกรองตำแหน่ง {{department}} : 'ผ่าน'
 คะแนนรวม: {{score}}
-ทีมงานจะติดต่อกลับเพื่อแจ้งขั้นตอนถัดไป ขอบคุณครับ/ค่ะ
+บริษัทจะติดต่อกลับเพื่อแจ้งขั้นตอนถัดไป ขอบคุณครับ/ค่ะ
 """).strip()
         default_fail = textwrap.dedent("""\
 เรียน {{name}} ({{candidate_id}})
@@ -293,8 +293,8 @@ with st.sidebar:
 สาเหตุหลัก: {{reasons}}
 ขอบคุณที่ให้ความสนใจ และหวังว่าจะมีโอกาสร่วมงานกันในอนาคตครับ/ค่ะ
 """).strip()
-        msg_tpl_pass = st.text_area("เทมเพลต (ผ่าน)", value=default_pass, height=140)
-        msg_tpl_fail = st.text_area("เทมเพลต (ไม่ผ่าน)", value=default_fail, height=160)
+        msg_tpl_pass = default_pass
+        msg_tpl_fail = default_fail
 
         st.markdown("---")
 
